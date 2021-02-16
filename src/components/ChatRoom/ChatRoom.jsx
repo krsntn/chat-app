@@ -19,7 +19,8 @@ function ChatRoom() {
 
   const messagesRef = firebase.firestore().collection('messages');
   const query = messagesRef.orderBy('createdAt', 'desc').limit(50);
-  const [messages] = useCollectionData(query, { idField: 'id' });
+  let [messages] = useCollectionData(query, { idField: 'id' });
+  messages = messages.reverse();
 
   useEffect(() => {
     if (initialLoad && messages) {
@@ -38,7 +39,7 @@ function ChatRoom() {
       </div>
       <div className={css.chatroom}>
         <div className={css.messages}>
-          {messages?.reverse().map((msg, index) => {
+          {messages?.map((msg) => {
             return <ChatMessage key={msg.id} message={msg} />;
           })}
           <div ref={refScrollToBottom} />
