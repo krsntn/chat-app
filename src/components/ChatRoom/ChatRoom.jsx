@@ -20,7 +20,7 @@ function ChatRoom() {
   const messagesRef = firebase.firestore().collection('messages');
   const query = messagesRef.orderBy('createdAt', 'desc').limit(50);
   let [messages] = useCollectionData(query, { idField: 'id' });
-  messages = messages.reverse();
+  messages = messages?.reverse();
 
   useEffect(() => {
     if (initialLoad && messages) {
