@@ -1,0 +1,13 @@
+body {
+  background-color: #111;
+  color: #ddd;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+
+  button {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,16 @@
+.form {
+  width: 100%;
+  display: flex;
+
+  .textarea {
+    resize: none;
+    flex: 1;
+    font-size: 1.2rem;
+  }
+
+  .submitButton {
+    display: inline-block;
+    flex-basis: 50px;
+    margin-left: 1px;
+  }
+}

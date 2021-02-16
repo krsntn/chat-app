@@ -1,0 +1,40 @@
+.message {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 500px;
+  padding: 1px 0;
+
+  .user {
+    color: #ddd;
+    text-align: right;
+    padding: 0 4px 0 2px;
+    flex: 0 0 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tooltip {
+    position: absolute;
+    top: -1.3rem;
+    background-color: #fff;
+    padding: 3px;
+    border-radius: 4px;
+    color: #000;
+    visibility: hidden;
+
+    &[data-show='true'] {
+      visibility: visible;
+    }
+  }
+
+  .text {
+    border-left: 1px solid #0f0;
+    margin: 0;
+    font-size: 1rem;
+    padding: 0 4px;
+    flex: 1 1 auto;
+    white-space: pre-wrap;
+  }
+}

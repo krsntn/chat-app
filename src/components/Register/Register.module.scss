@@ -1,0 +1,29 @@
+.form {
+  margin: 20px auto;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+
+  div:first-child {
+    display: flex;
+    justify-content: flex-start;
+
+    label {
+      padding: 0 5px;
+    }
+
+    .name_input {
+      flex: 1;
+      font-size: 1.2rem;
+    }
+  }
+
+  .button_wrapper {
+    button {
+      margin: 5px 0;
+      width: 100%;
+      height: 40px;
+    }
+  }
+}

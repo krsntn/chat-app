@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0;
+}
+
+.chatroom {
+  background: #1b1b1b;
+  border: 1px solid #0f0;
+  color: #0f0;
+  padding: 2px;
+
+  .messages {
+    max-height: 600px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .divider {
+    height: 1px;
+    background-color: #0f0;
+    margin: 2px 0;
+  }
+
+  .inputForm {
+    display: flex;
+  }
+}
