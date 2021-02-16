@@ -15,16 +15,17 @@ function TextInputForm(props) {
     const { uid, displayName } = firebase.auth().currentUser;
 
     if (inputValue.trim().length > 0) {
-      console.log(inputValue);
-      await messagesRef.add({
-        text: inputValue,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        uid,
-        name: displayName,
-      });
-
-      setInputValue('');
-      scrollToBottom();
+      messagesRef
+        .add({
+          text: inputValue,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          uid,
+          name: displayName,
+        })
+        .then(() => {
+          setInputValue('');
+          scrollToBottom();
+        });
     }
   };
 

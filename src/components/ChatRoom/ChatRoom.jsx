@@ -18,9 +18,12 @@ function ChatRoom() {
   };
 
   const messagesRef = firebase.firestore().collection('messages');
-  const query = messagesRef.orderBy('createdAt', 'desc').limit(50);
-  let [messages] = useCollectionData(query, { idField: 'id' });
-  messages = messages?.reverse();
+  const query = messagesRef
+    .where('createdAt', '!=', null)
+    .orderBy('createdAt', 'desc')
+    .limit(50);
+  const [messages] = useCollectionData(query, { idField: 'id' });
+  const displayMsg = messages?.sort((a, b) => a.createdAt - b.createdAt);
 
   useEffect(() => {
     if (initialLoad && messages) {
@@ -29,7 +32,7 @@ function ChatRoom() {
     }
   }, [initialLoad, messages]);
 
-  console.log('messages', messages);
+  console.log('messages', displayMsg);
 
   return (
     <div>
@@ -39,7 +42,7 @@ function ChatRoom() {
       </div>
       <div className={css.chatroom}>
         <div className={css.messages}>
-          {messages?.map((msg) => {
+          {displayMsg?.map((msg) => {
             return <ChatMessage key={msg.id} message={msg} />;
           })}
           <div ref={refScrollToBottom} />
