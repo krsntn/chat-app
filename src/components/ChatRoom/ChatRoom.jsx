@@ -28,6 +28,8 @@ function ChatRoom() {
     }
   }, [initialLoad, messages]);
 
+  console.log('messages', messages);
+
   return (
     <div>
       <div className={css.header}>
