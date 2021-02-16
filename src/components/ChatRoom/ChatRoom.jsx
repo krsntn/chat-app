@@ -23,7 +23,9 @@ function ChatRoom() {
     .orderBy('createdAt', 'desc')
     .limit(50);
   const [messages] = useCollectionData(query, { idField: 'id' });
-  const displayMsg = messages?.sort((a, b) => a.createdAt - b.createdAt);
+  const displayMsg = messages
+    ?.filter((x) => x.createdAt !== null)
+    .sort((a, b) => a.createdAt - b.createdAt);
 
   useEffect(() => {
     if (initialLoad && messages) {
@@ -31,8 +33,6 @@ function ChatRoom() {
       setInitialLoad(false);
     }
   }, [initialLoad, messages]);
-
-  console.log('messages', displayMsg);
 
   return (
     <div>
